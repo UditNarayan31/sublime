@@ -26,11 +26,11 @@
     <div class="row mt-2 px-2 mx-5 mb-5">
       <div class="col-sm-2">
         <div class="card mt-4">
-          <div style="border-style: dotted; height:255px; border-radius: 16px;">
+          <div style="border-style: dotted; height:195px; border-radius: 16px;">
             <div class="p-2">
               <small> July 8, 8:00</small>
             </div>
-            <div class="text-center" style="margin-top:40%">
+            <div class="text-center" style="margin-top:25%">
               <button type="button" class="bgColor btn rounded-lg">Select</button>
             </div>
           </div>
@@ -41,10 +41,10 @@
           <div class="mt-2 mx-2">
             <small> {{ item.datetime }}</small>
           </div>
-          <div class="form-check" style="position:relative; top:30px; left:7px;">
+          <div class="form-check" style="position:relative; top:20px; left:7px;">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
           </div>
-          <img :src="item.keyword" alt="">
+          <img class="imagestyle" :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`" alt="">
           <div class="row align-items-center p-2">
             <div class="col-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -62,10 +62,10 @@
           <div class="mx-2 mt-2">
             <small> {{ item.datetime }}</small>
           </div>
-          <div class="form-check" style="position:relative; top:30px; left:7px;">
+          <div class="form-check" style="position:relative; top:20px; left:7px;">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
           </div>
-          <img :src="item.keyword" alt="">
+          <img class="imagestyle" :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`" alt="">
           <div class="row align-items-center p-2">
             <div class="col-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -83,10 +83,10 @@
           <div class="mx-2 mt-2">
             <small> {{ item.datetime }}</small>
           </div>
-          <div class="form-check" style="position:relative; top:30px; left:7px;">
+          <div class="form-check" style="position:relative; top:20px; left:7px;">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
           </div>
-          <img :src="item.keyword" alt="">
+          <img class="imagestyle" :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`" alt="">
           <div class="row align-items-center p-2">
             <div class="col-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
@@ -104,10 +104,10 @@
           <div class="mx-2 mt-2">
             <small> {{ item.datetime }}</small>
           </div>
-          <div class="form-check" style="position:relative; top:30px; left:7px;">
+          <div class="form-check" style="position:relative; top:20px; left:7px;">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
           </div>
-          <img :src="item.keyword" alt="">
+          <img class="imagestyle" :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`" alt="">
           <div class="row align-items-center p-2">
             <div class="col-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -140,13 +140,18 @@ export default {
     username() {
       return this.$auth.user.name
     },
+    userid() {
+      return this.$auth.user.id
+    },
   },
   methods: {
+  
     async logout() {
       try {
         this.authLoader = true
-        let response = await this.$auth.logout(this.username)
-        if (response) this.authLoader = false
+        let response = await this.$auth.logout()
+        if (response) 
+        this.authLoader = false
         this.$router.push('/login')
       } catch (error) {
         console.log(error)
@@ -160,6 +165,9 @@ export default {
 body {
   overflow-x: hidden;
   /* Hide scrollbars */
+}
+.imagestyle{
+  margin-top: -1.20rem !important;
 }
 
 .bgColor {
